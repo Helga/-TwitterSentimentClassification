@@ -1,0 +1,434 @@
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+\title{Homework 4}
+
+\author{Helga Mazyar}
+
+\maketitle
+\begin{enumerate}
+  \item 
+
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+  \hlkwd{library}\hlstd{(}\hlstr{"data.table"}\hlstd{)}
+\hlkwd{library}\hlstd{(}\hlstr{"DescTools"}\hlstd{)}
+\end{alltt}
+
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# \\\#\# Attaching package: 'DescTools'}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# The following object is masked from 'package:data.table':\\\#\# \\\#\#\ \ \ \  \%like\%}}\begin{alltt}
+\hlkwd{library}\hlstd{(}\hlstr{"plyr"}\hlstd{)}
+\hlcom{#setwd("C:/GoogleDrive/Fall_2016/PSYCH 625/Project2")}
+\hlkwd{setwd}\hlstd{(}\hlstr{"C:/Users/hemaz/Google Drive/Fall_2016/PSYCH 625/Project2"}\hlstd{)}
+
+\hlcom{############## training }
+\hlstd{train} \hlkwb{<-} \hlkwa{function} \hlstd{(}\hlkwc{Y}\hlstd{,} \hlkwc{X}\hlstd{) \{}
+  \hlstd{posterior} \hlkwb{=} \hlkwd{vector}\hlstd{(}\hlkwc{mode} \hlstd{=} \hlstr{"list"}\hlstd{,} \hlkwc{length} \hlstd{=} \hlkwd{ncol}\hlstd{(X))}
+
+  \hlkwa{for} \hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{ncol}\hlstd{(X))\{}
+    \hlstd{t} \hlkwb{=} \hlkwd{table}\hlstd{(Y, X[,i] )}
+    \hlkwa{for} \hlstd{(j} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{nrow}\hlstd{(t)) t[j,]}\hlkwb{=} \hlstd{t[j,]}\hlopt{/}\hlkwd{sum}\hlstd{(t[j,])}
+
+    \hlstd{posterior[[i]]} \hlkwb{=} \hlstd{t;}
+  \hlstd{\}}
+
+  \hlcom{# calculate priors}
+  \hlstd{prior} \hlkwb{=} \hlkwd{rep}\hlstd{(}\hlnum{NA}\hlstd{,} \hlkwd{nlevels}\hlstd{(Y))}
+  \hlkwa{for}\hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{nlevels}\hlstd{(Y))\{}
+    \hlstd{prior[i]} \hlkwb{=} \hlkwd{sum}\hlstd{(Y}\hlopt{==}\hlkwd{levels}\hlstd{(Y)[i])}\hlopt{/}\hlkwd{length}\hlstd{(Y)}
+  \hlstd{\}}
+
+  \hlkwd{return}\hlstd{(}\hlkwc{classifier} \hlstd{=} \hlkwd{list}\hlstd{(}\hlkwc{prior}\hlstd{=prior,} \hlkwc{posterior}\hlstd{=posterior))}
+\hlstd{\}}
+\hlcom{##########classify}
+\hlstd{classify} \hlkwb{<-} \hlkwa{function} \hlstd{(}\hlkwc{classifier}\hlstd{,} \hlkwc{query}\hlstd{) \{}
+  \hlstd{prob} \hlkwb{=} \hlstd{classifier}\hlopt{$}\hlstd{prior}
+  \hlkwa{for} \hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{length}\hlstd{(query))\{}
+    \hlstd{t} \hlkwb{=} \hlstd{classifier}\hlopt{$}\hlstd{posterior[[i]]}
+    \hlstd{prob} \hlkwb{=} \hlstd{prob}\hlopt{*} \hlstd{t[,query[i]]}
+  \hlstd{\}}
+  \hlkwd{return}\hlstd{(prob)}
+
+
+\hlstd{\}}
+\hlstd{NB} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{formula}\hlstd{,} \hlkwc{training_set}\hlstd{,} \hlkwc{query}\hlstd{)\{}
+  \hlkwa{if} \hlstd{(}\hlopt{!}\hlkwd{is.data.frame}\hlstd{(training_set))} \hlkwd{stop}\hlstd{(}\hlstr{"NB can only handle data frames"}\hlstd{)}
+  \hlkwa{if} \hlstd{(}\hlopt{!}\hlkwd{is.vector}\hlstd{(query))} \hlkwd{stop} \hlstd{(}\hlstr{"Query needs to be a vector"}\hlstd{)}
+
+  \hlstd{f1.parsed} \hlkwb{<-} \hlkwd{ParseFormula}\hlstd{(formula,}\hlkwc{data}\hlstd{=training_set[}\hlnum{1}\hlstd{,])}
+  \hlstd{Y} \hlkwb{<-} \hlstd{f1.parsed}\hlopt{$}\hlstd{lhs}\hlopt{$}\hlstd{vars}
+  \hlstd{X} \hlkwb{<-} \hlstd{f1.parsed}\hlopt{$}\hlstd{rhs}\hlopt{$}\hlstd{vars}
+  \hlstd{a} \hlkwb{=} \hlstd{training_set[,X]}
+  \hlcom{#make sure query is in the correct format}
+  \hlkwa{for} \hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{length}\hlstd{(X))\{}
+
+    \hlstd{b} \hlkwb{=} \hlkwd{levels}\hlstd{(a[,i])} \hlcom{#loop over X colomns}
+    \hlkwa{if} \hlstd{(}\hlopt{!}\hlstd{query[i]} \hlopt{%in%} \hlstd{b)} \hlkwd{stop}\hlstd{(}\hlstr{"Query does not match the model"}\hlstd{)}
+  \hlstd{\}}
+  \hlstd{classifier} \hlkwb{<-} \hlkwd{train}\hlstd{(training_set[,Y], training_set[,X])}
+
+  \hlstd{prob} \hlkwb{=} \hlkwd{classify}\hlstd{(classifier, query)}
+  \hlstd{ind} \hlkwb{=} \hlkwd{which.max}\hlstd{(prob)}
+  \hlkwd{cat}\hlstd{(}\hlkwd{levels}\hlstd{(training_set[,Y])[ind], prob[ind])}
+  \hlkwd{return}\hlstd{(}\hlkwd{levels}\hlstd{(training_set[,Y])[ind])}
+\hlstd{\}}
+\hlcom{# }
+\hlstd{data} \hlkwb{<-}\hlkwd{read.csv}\hlstd{(}\hlstr{'Tennis.csv'}\hlstd{)}
+\hlstd{data} \hlkwb{=} \hlstd{data[,}\hlopt{-}\hlnum{1}\hlstd{]}
+\hlcom{# # #}
+\hlcom{# #}
+\hlstd{formula} \hlkwb{<-} \hlstd{Play} \hlopt{~} \hlstd{Outlook} \hlopt{+} \hlstd{Temperature} \hlopt{+} \hlstd{Humidity} \hlopt{+} \hlstd{Wind}
+\hlcom{# # #}
+\hlstd{query} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Sunny"}\hlstd{,} \hlstr{"Cool"}\hlstd{,} \hlstr{"High"}\hlstd{,} \hlstr{"Strong"}\hlstd{)}
+\hlkwd{NB}\hlstd{(formula, data, query)}
+\end{alltt}
+\begin{verbatim}
+## No 0.02057143
+## [1] "No"
+\end{verbatim}
+\begin{alltt}
+\hlstd{query} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Sunny"}\hlstd{,} \hlstr{"Cool"}\hlstd{,} \hlstr{"Normal"}\hlstd{,} \hlstr{"Weak"}\hlstd{)}
+\hlkwd{NB}\hlstd{(formula, data, query)}
+\end{alltt}
+\begin{verbatim}
+## Yes 0.02116402
+## [1] "Yes"
+\end{verbatim}
+\begin{alltt}
+\hlstd{query} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Hot"}\hlstd{,} \hlstr{"Cool"}\hlstd{,} \hlstr{"Normal"}\hlstd{,} \hlstr{"Weak"}\hlstd{)}
+\hlkwd{NB}\hlstd{(formula, data, query)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in NB(formula, data, query): Query does not match the model}}\begin{alltt}
+\hlkwd{NB}\hlstd{(formula,} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{2}\hlstd{), query)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in NB(formula, c(1, 2), query): NB can only handle data frames}}\begin{alltt}
+\hlstd{query} \hlkwb{<-} \hlstd{data[data}\hlopt{$}\hlstd{Outlook} \hlopt{==} \hlstr{"Sunny"}\hlstd{, ]}
+\hlkwd{NB}\hlstd{(formula, data, query)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in NB(formula, data, query): Query needs to be a vector}}\begin{alltt}
+\hlcom{##########House data}
+\hlstd{houseData} \hlkwb{<-} \hlkwd{read.csv}\hlstd{(}\hlstr{"house-votes-84.data"}\hlstd{,}\hlkwc{na.strings}\hlstd{=}\hlstr{"?"}\hlstd{)}
+\hlcom{# colnames(houseData) <- c("party", "handicapped-infants",}
+\hlcom{#                          "water-project-cost-sharing",}
+\hlcom{#                          "adoption-of-the-budget-resolution",}
+\hlcom{#                          "physician-fee-freeze",}
+\hlcom{#                          "el-salvador-aid",}
+\hlcom{#                          "religious-groups-in-schools",}
+\hlcom{#                          "anti-satellite-test-ban",}
+\hlcom{#                          "aid-to-nicaraguan-contras",}
+\hlcom{#                          "mx-missile",}
+\hlcom{#                          "immigration",}
+\hlcom{#                          "synfuels-corporation-cutback",}
+\hlcom{#                          "education-spending",}
+\hlcom{#                          "superfund-right-to-sue",}
+\hlcom{#                          "crime", "duty-free-exports",}
+\hlcom{#                          "export-administration-act-south-africa")}
+\hlkwd{colnames}\hlstd{(houseData)} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlstr{"party"}\hlstd{, LETTERS[}\hlkwd{seq}\hlstd{(} \hlkwc{from} \hlstd{=} \hlnum{1}\hlstd{,} \hlkwc{to} \hlstd{=} \hlnum{16} \hlstd{)])}
+
+\hlstd{mydata} \hlkwb{<-} \hlstd{houseData[}\hlkwd{complete.cases}\hlstd{(houseData),]}
+\hlstd{formula} \hlkwb{<-} \hlstd{party} \hlopt{~} \hlstd{.}
+\hlstd{query} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlkwd{as.vector}\hlstd{(}\hlkwd{t}\hlstd{(mydata[}\hlnum{2}\hlstd{,}\hlopt{-}\hlnum{1}\hlstd{])))}
+\hlkwd{NB}\hlstd{(formula,mydata[}\hlopt{-}\hlnum{2}\hlstd{,],query)}
+\end{alltt}
+\begin{verbatim}
+## republican 0.009148421
+## [1] "republican"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\item
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{LOOCV} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{formula}\hlstd{,} \hlkwc{data}\hlstd{)\{}
+  \hlstd{f1.parsed} \hlkwb{<-} \hlkwd{ParseFormula}\hlstd{(formula,}\hlkwc{data}\hlstd{=data[}\hlnum{1}\hlstd{,])}
+  \hlstd{Y} \hlkwb{<-} \hlstd{f1.parsed}\hlopt{$}\hlstd{lhs}\hlopt{$}\hlstd{vars}
+  \hlstd{X} \hlkwb{<-} \hlstd{f1.parsed}\hlopt{$}\hlstd{rhs}\hlopt{$}\hlstd{vars}
+  \hlstd{res} \hlkwb{=} \hlkwd{rep}\hlstd{(}\hlnum{NA}\hlstd{,} \hlkwd{dim}\hlstd{(data)[}\hlnum{1}\hlstd{])}
+  \hlkwa{for} \hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{dim}\hlstd{(data)[}\hlnum{1}\hlstd{])\{}
+    \hlstd{trainig_set} \hlkwb{=} \hlstd{data[}\hlopt{-}\hlstd{i,]}
+    \hlstd{test} \hlkwb{=} \hlstd{data[i,X]}
+    \hlstd{test} \hlkwb{=} \hlkwd{as.vector}\hlstd{(}\hlkwd{t}\hlstd{(test))}
+    \hlstd{res[i]} \hlkwb{=} \hlkwd{NB}\hlstd{(formula, trainig_set, test);}
+  \hlstd{\}}
+  \hlstd{perf} \hlkwb{=} \hlkwd{mean}\hlstd{(data[,Y]} \hlopt{==} \hlstd{res)}
+  \hlkwd{cat}\hlstd{(}\hlstr{'\textbackslash{}n'}\hlstd{, perf)}
+
+\hlstd{\}}
+\hlstd{data} \hlkwb{<-}\hlkwd{read.csv}\hlstd{(}\hlstr{'Tennis.csv'}\hlstd{)}
+\hlstd{data} \hlkwb{=} \hlstd{data[,}\hlopt{-}\hlnum{1}\hlstd{]}
+\hlstd{query} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Sunny"}\hlstd{,} \hlstr{"Cool"}\hlstd{,} \hlstr{"High"}\hlstd{,} \hlstr{"Strong"}\hlstd{)}
+\hlstd{formula} \hlkwb{<-} \hlstd{Play} \hlopt{~} \hlstd{Outlook} \hlopt{+} \hlstd{Temperature} \hlopt{+} \hlstd{Humidity} \hlopt{+} \hlstd{Wind}
+ \hlkwd{LOOCV}\hlstd{(formula, data)}
+\end{alltt}
+\begin{verbatim}
+## Yes 0.007597341No 0.01442308Yes 0.004507212No 0.01969231Yes 0.01502404Yes 0.01709402Yes 0.009014423Yes 0.01519468Yes 0.007512019Yes 0.02253606No 0.01107692Yes 0.005408654Yes 0.01126803Yes 0.01139601
+##  0.5714286
+\end{verbatim}
+\begin{alltt}
+ \hlstd{formula} \hlkwb{<-} \hlstd{Outlook} \hlopt{~} \hlstd{Temperature} \hlopt{+} \hlstd{Humidity} \hlopt{+} \hlstd{Wind} \hlopt{+} \hlstd{Play}
+ \hlkwd{LOOCV}\hlstd{(formula,data)}
+\end{alltt}
+\begin{verbatim}
+## Sunny 0.009615385Sunny 0.004807692Sunny 0.02215385Sunny 0.02215385Overcast 0.01923077Sunny 0.007384615Rain 0.02215385Rain 0.02215385Rain 0.03323077Overcast 0.01923077Rain 0.03323077Rain 0.02215385Sunny 0.01476923Sunny 0.02215385
+##  0.1428571
+\end{verbatim}
+\begin{alltt}
+ \hlstd{formula} \hlkwb{<-} \hlstd{party} \hlopt{~}\hlstd{.}
+ \hlkwd{LOOCV}\hlstd{(formula,mydata)}
+\end{alltt}
+\begin{verbatim}
+## democrat 5.417018e-07republican 0.009148421democrat 0.001303638democrat 0.001261585democrat 0.001752536democrat 0.001588068democrat 0.001303638republican 3.377703e-06democrat 0.001303638republican 0.004509785democrat 0.0005787669republican 0.009148421democrat 0.001261585republican 0.004509785republican 0.0003949475republican 0.006113264democrat 0.0007285448democrat 0.001031577democrat 0.00153684democrat 0.0008468171democrat 0.0001145822democrat 0.001303638republican 0.001601093republican 0.001086803republican 0.002204657republican 0.01240119republican 0.01240119republican 0.004509785democrat 0.0008750444republican 0.000860108republican 0.0005838309republican 0.006113264democrat 0.001261585democrat 2.908822e-05republican 8.139847e-07democrat 0.0007550081republican 3.959114e-05republican 1.277134e-05democrat 6.169855e-07republican 0.0009570874republican 0.01388934republican 0.005050959republican 4.755725e-06republican 0.006846856republican 0.005050959democrat 5.581026e-06democrat 0.001752536democrat 0.001810954democrat 0.0003550891democrat 3.019952e-06democrat 1.015471e-06democrat 0.0007668545republican 9.547547e-07democrat 5.500088e-06democrat 0.0003883176republican 0.009148421democrat 0.001217039democrat 0.001588068republican 2.137425e-05democrat 0.0003075127republican 0.005050959republican 0.002469215democrat 0.00010145republican 0.01388934republican 0.006846856republican 2.099673e-05democrat 0.0003405822democrat 0.001220431democrat 1.659821e-06republican 0.0001250648republican 0.009148421democrat 5.834179e-06republican 0.002204657democrat 0.0004896134republican 0.003247931democrat 9.824188e-05democrat 0.000141583republican 0.004509785republican 0.0004239969republican 0.006113264republican 1.130767e-05republican 3.711408e-05republican 1.158908e-06republican 0.003284049republican 7.877025e-07democrat 4.135821e-07democrat 0.0006381753republican 2.545712e-05democrat 0.000999062democrat 3.536196e-05democrat 0.001752536democrat 0.001257607democrat 0.001257607democrat 0.001032364democrat 0.00153684democrat 7.444067e-05democrat 0.00106725democrat 0.0005603061democrat 0.001261585democrat 0.001438111democrat 0.001752536republican 0.0006538906democrat 9.094317e-05republican 0.002469215democrat 0.0009978576democrat 0.0008475218republican 0.01240119democrat 0.001102825democrat 8.615057e-05republican 0.003247931republican 0.006113264democrat 0.0001415741republican 0.001432269democrat 0.0004597806republican 0.0001204327republican 0.009148421republican 0.001887138republican 0.01240119republican 0.002469215democrat 0.00106725democrat 1.190724e-05republican 1.69177e-05democrat 0.000950751democrat 0.0005220321democrat 0.001810954republican 0.004509785republican 0.004509785democrat 0.001001847republican 0.009148421democrat 0.00117636democrat 0.0009200816republican 0.0001255197democrat 0.001102825democrat 0.001031577democrat 0.00117636democrat 0.00117636republican 0.002469215democrat 0.0001142154democrat 0.001031577democrat 0.001261585republican 6.193628e-07republican 0.0005848479republican 4.281536e-06republican 0.01024623republican 0.006846856democrat 0.0004288813republican 0.01024623democrat 0.000998688democrat 4.687831e-06democrat 7.828322e-05democrat 0.0002493379republican 0.0002859091democrat 0.0001671447democrat 0.0001675658republican 1.748217e-05republican 0.004985915republican 0.005050959republican 0.006846856republican 0.005050959republican 0.006846856democrat 0.0001182962republican 0.0007927938democrat 0.0002609825democrat 0.001438649republican 0.002204657republican 1.11431e-05democrat 6.468297e-08democrat 0.000283744democrat 3.350339e-05democrat 0.0003884874republican 0.0008017396democrat 3.17858e-06republican 0.009148421democrat 0.0008750444republican 0.006113264democrat 0.00106725democrat 0.00153684democrat 0.0009200816republican 0.0002351769republican 0.0004389716republican 3.107942e-06democrat 0.001257607republican 0.000102634republican 0.01388934republican 0.001793224republican 1.464459e-05democrat 2.282279e-05republican 2.574433e-06republican 0.0001575796democrat 1.545124e-05republican 0.005050959republican 0.005050959democrat 0.0003758148democrat 4.468993e-05republican 4.468426e-07republican 7.021289e-05republican 1.980645e-06democrat 0.0002044775republican 0.001507981republican 0.009148421republican 0.0001689009republican 0.01024623republican 0.01024623democrat 5.780545e-05republican 9.14052e-05republican 2.857983e-07democrat 3.25192e-06republican 0.0004259582democrat 7.830223e-06democrat 8.780022e-06republican 0.001086803republican 0.003247931republican 0.01024623democrat 2.822139e-06republican 0.001010483republican 0.005050959republican 0.001821552democrat 0.0009653072republican 0.01388934democrat 0.0008468171republican 0.0005353733democrat 0.000401437democrat 0.0002488837democrat 0.0008468171republican 5.631803e-06democrat 1.825498e-05democrat 0.0008757725democrat 0.0003774318democrat 0.001752536republican 0.0008218542republican 0.0003757502democrat 0.0008169167
+##  0.9181034
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  
+%%%%%%%%%%%%%%%%%%%%%
+\item
+One way to avoid long runtime, is to build the classifer one time and use it for classifying all the queries (instead of building it per query). NB and LOOCV were modified to achive this.  
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+ \hlkwd{library}\hlstd{(}\hlstr{"tm"}\hlstd{)}
+\end{alltt}
+
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: NLP}}\begin{alltt}
+  \hlstd{train_fast} \hlkwb{<-} \hlkwa{function} \hlstd{(}\hlkwc{Y}\hlstd{,} \hlkwc{X}\hlstd{) \{}
+  \hlkwd{print}\hlstd{(}\hlstr{"Training the classifier"}\hlstd{)}
+  \hlstd{prob} \hlkwb{=} \hlkwd{array}\hlstd{(}\hlnum{NA}\hlstd{,} \hlkwd{c}\hlstd{(}\hlkwd{nlevels}\hlstd{(Y),}\hlkwd{nlevels}\hlstd{(}\hlkwd{as.factor}\hlstd{(X)) ,} \hlkwd{ncol}\hlstd{(X)))}
+  \hlstd{eps} \hlkwb{=} \hlnum{1}\hlopt{/}\hlkwd{ncol}\hlstd{(X)}
+  \hlkwa{for} \hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{ncol}\hlstd{(X))\{}
+    \hlstd{t} \hlkwb{=} \hlkwd{table}\hlstd{(Y, X[,i] )}
+    \hlstd{t} \hlkwb{=} \hlstd{t}\hlopt{+}\hlstd{eps} \hlcom{# add-one smoothing}
+    \hlkwa{for} \hlstd{(j} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{nrow}\hlstd{(t)) t[j,]}\hlkwb{=} \hlstd{t[j,]}\hlopt{/}\hlkwd{sum}\hlstd{(t[j,])}
+    \hlstd{prob[,,i]} \hlkwb{=}\hlstd{t}
+  \hlstd{\}}
+
+  \hlcom{# calculate priors}
+  \hlstd{prior} \hlkwb{=} \hlkwd{rep}\hlstd{(}\hlnum{NA}\hlstd{,} \hlkwd{nlevels}\hlstd{(Y))}
+  \hlkwa{for}\hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{nlevels}\hlstd{(Y))\{}
+    \hlstd{prior[i]} \hlkwb{=} \hlkwd{sum}\hlstd{(Y}\hlopt{==}\hlkwd{levels}\hlstd{(Y)[i])}\hlopt{/}\hlkwd{length}\hlstd{(Y)}
+  \hlstd{\}}
+  \hlstd{classifier} \hlkwb{=} \hlkwd{list}\hlstd{(}\hlkwc{prior}\hlstd{=prior,} \hlkwc{posterior}\hlstd{=prob)}
+  \hlkwd{return}\hlstd{(classifier)}
+\hlstd{\}}
+
+\hlcom{#####################}
+\hlstd{NB_fast} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{classifer}\hlstd{,} \hlkwc{Y}\hlstd{,} \hlkwc{X}\hlstd{,} \hlkwc{training_set}\hlstd{,} \hlkwc{query}\hlstd{)\{}
+  \hlcom{#classify}
+  \hlstd{prob} \hlkwb{=} \hlstd{classifer}\hlopt{$}\hlstd{prior}
+  \hlkwa{for} \hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{length}\hlstd{(query))\{}
+    \hlstd{prob} \hlkwb{=} \hlstd{prob}\hlopt{*} \hlstd{classifer}\hlopt{$}\hlstd{posterior[,query[i],i]}
+  \hlstd{\}}
+  \hlstd{ind} \hlkwb{=} \hlkwd{which.max}\hlstd{(prob)}
+  \hlkwd{return} \hlstd{(}\hlkwd{levels}\hlstd{(training_set[,Y])[ind])}
+\hlstd{\}}
+\hlcom{###########}
+\hlstd{cleanup} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{text}\hlstd{)\{}
+  \hlstd{docs} \hlkwb{<-} \hlkwd{Corpus}\hlstd{(}\hlkwd{VectorSource}\hlstd{(text))}
+  \hlcom{# Twitter tags}
+  \hlstd{tt}\hlkwb{<-}\hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwd{gsub}\hlstd{(}\hlstr{"RT |via"}\hlstd{,} \hlstr{""}\hlstd{, x)}
+  \hlstd{docs}\hlkwb{<-} \hlkwd{tm_map}\hlstd{(docs,} \hlkwd{content_transformer}\hlstd{(tt))}
+
+  \hlcom{# Twitter Usernames}
+  \hlstd{tun}\hlkwb{<-}\hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwd{gsub}\hlstd{(}\hlstr{"(^|[^@\textbackslash{}\textbackslash{}w])@(\textbackslash{}\textbackslash{}w\{1,15\})\textbackslash{}\textbackslash{}b"}\hlstd{,} \hlstr{""}\hlstd{, x)}
+  \hlstd{docs}\hlkwb{<-} \hlkwd{tm_map}\hlstd{(docs,} \hlkwd{content_transformer}\hlstd{(tun))}
+
+
+  \hlcom{# URLs }
+  \hlstd{urlPat}\hlkwb{<-}\hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwd{gsub}\hlstd{(}\hlstr{"(ftp|http)(s?)://.*\textbackslash{}\textbackslash{}b"}\hlstd{,} \hlstr{""}\hlstd{, x)}
+  \hlstd{docs} \hlkwb{<-} \hlkwd{tm_map}\hlstd{(docs,} \hlkwd{content_transformer}\hlstd{(urlPat))}
+
+  \hlcom{# Convert the text to lower case}
+  \hlstd{docs} \hlkwb{<-} \hlkwd{tm_map}\hlstd{(docs,} \hlkwd{content_transformer}\hlstd{(tolower))}
+
+  \hlcom{# Remove numbers}
+  \hlstd{docs} \hlkwb{<-} \hlkwd{tm_map}\hlstd{(docs, removeNumbers)}
+  \hlcom{# Remove english common stopwords}
+  \hlstd{docs} \hlkwb{<-} \hlkwd{tm_map}\hlstd{(docs, removeWords,} \hlkwd{stopwords}\hlstd{(}\hlstr{"english"}\hlstd{))}
+  \hlcom{# Remove your own stop word}
+  \hlcom{# specify your stopwords as a character vector}
+  \hlstd{docs} \hlkwb{<-} \hlkwd{tm_map}\hlstd{(docs, removeWords,} \hlkwd{c}\hlstd{(}\hlstr{"blabla1"}\hlstd{,} \hlstr{"blabla2"}\hlstd{))}
+  \hlcom{# Remove punctuations}
+  \hlstd{docs} \hlkwb{<-} \hlkwd{tm_map}\hlstd{(docs, removePunctuation)}
+  \hlcom{# Eliminate extra white spaces}
+  \hlstd{docs} \hlkwb{<-} \hlkwd{tm_map}\hlstd{(docs, stripWhitespace)}
+
+  \hlkwd{return}\hlstd{(docs)}
+\hlstd{\}}
+\hlstd{LOOCV_fast} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{classifier}\hlstd{,} \hlkwc{Y}\hlstd{,} \hlkwc{X}\hlstd{,} \hlkwc{data}\hlstd{,} \hlkwc{n}\hlstd{)\{}
+
+  \hlkwa{if} \hlstd{(}\hlopt{!}\hlkwd{is.data.frame}\hlstd{(data))} \hlkwd{stop}\hlstd{(}\hlstr{"NB can only handle data frames"}\hlstd{)}
+  \hlkwd{print}\hlstd{(}\hlstr{"Running LOOCV"}\hlstd{)}
+
+  \hlstd{res} \hlkwb{=} \hlkwd{rep}\hlstd{(}\hlnum{NA}\hlstd{,} \hlkwd{dim}\hlstd{(data)[}\hlnum{1}\hlstd{])}
+
+  \hlkwa{for} \hlstd{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hlkwd{dim}\hlstd{(data)[}\hlnum{1}\hlstd{])\{}
+    \hlstd{t0} \hlkwb{=} \hlkwd{Sys.time}\hlstd{()}
+    \hlstd{trainig_set} \hlkwb{=} \hlstd{data[}\hlopt{-}\hlstd{i,]}
+    \hlstd{test} \hlkwb{=} \hlkwd{factor}\hlstd{(}\hlkwd{as.character}\hlstd{(data[i,X]))}
+    \hlkwd{levels}\hlstd{(test)} \hlkwb{=} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{2}\hlstd{)}
+    \hlstd{res[i]} \hlkwb{=} \hlkwd{NB_fast}\hlstd{(classifier, Y, X, trainig_set, test);}
+    \hlstd{t1} \hlkwb{=} \hlkwd{Sys.time}\hlstd{()} \hlopt{-} \hlstd{t0;}
+    \hlkwa{if} \hlstd{(i}\hlopt{%%}\hlnum{1000}\hlopt{==}\hlnum{1}\hlstd{)\{}
+      \hlkwd{cat}\hlstd{(}\hlstr{"trial#"}\hlstd{, i,} \hlstr{"time remaining = "}\hlstd{, t1}\hlopt{*}\hlstd{(}\hlkwd{dim}\hlstd{(data)[}\hlnum{1}\hlstd{]}\hlopt{-}\hlstd{i)}\hlopt{/}\hlnum{60}\hlstd{,} \hlstr{"min"}\hlstd{)}
+      \hlkwd{print}\hlstd{(i)}
+    \hlstd{\}}
+
+  \hlstd{\}}
+  \hlstd{perf} \hlkwb{=} \hlkwd{mean}\hlstd{(data[,Y]} \hlopt{==} \hlstd{res)}
+  \hlkwd{cat}\hlstd{(}\hlstr{'\textbackslash{}n perf='}\hlstd{, perf)}
+
+\hlstd{\}}
+\hlcom{#################}
+\hlstd{sentiment} \hlkwb{<-}\hlkwa{function}\hlstd{(}\hlkwc{data}\hlstd{)\{}
+
+    \hlstd{text} \hlkwb{=} \hlstd{data[,}\hlnum{2}\hlstd{]}
+    \hlstd{TYPE} \hlkwb{=} \hlstd{data[,}\hlnum{1}\hlstd{]}
+    \hlstd{docs} \hlkwb{=} \hlkwd{cleanup}\hlstd{(text)}
+
+    \hlcom{#Build a term-document matrix}
+    \hlstd{dtm} \hlkwb{=} \hlkwd{TermDocumentMatrix}\hlstd{(docs)}
+    \hlcom{#remove sparse terms}
+    \hlstd{dtm} \hlkwb{=}\hlkwd{removeSparseTerms}\hlstd{(dtm,} \hlkwc{sparse}\hlstd{=}\hlnum{0.99}\hlstd{)}
+
+    \hlstd{dtm} \hlkwb{=} \hlkwd{weightBin}\hlstd{(dtm)}
+    \hlstd{m} \hlkwb{<-} \hlkwd{as.matrix}\hlstd{(dtm)}
+    \hlstd{data} \hlkwb{=} \hlkwd{data.frame}\hlstd{(}\hlkwd{t}\hlstd{(m), TYPE)}
+    \hlcom{#build the calssifier}
+    \hlstd{classifier} \hlkwb{=} \hlkwd{train_fast}\hlstd{(}\hlkwd{as.factor}\hlstd{(TYPE),} \hlkwd{t}\hlstd{(m))}
+    \hlstd{X} \hlkwb{=} \hlkwd{colnames}\hlstd{(data[,}\hlopt{-}\hlkwd{ncol}\hlstd{(data)])}
+    \hlstd{Y} \hlkwb{=} \hlstr{"TYPE"}
+    \hlstd{a} \hlkwb{=} \hlkwd{LOOCV_fast}\hlstd{(classifier, Y, X, data, n)}
+
+\hlstd{\}}
+
+\hlkwd{load}\hlstd{(}\hlstr{"sentiment"}\hlstd{)}
+\hlstd{data} \hlkwb{<-} \hlkwd{subset}\hlstd{(r,}\hlkwc{select}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"sentiment"}\hlstd{,}\hlstr{"text"}\hlstd{))}
+\hlkwd{sentiment}\hlstd{(data)}
+\end{alltt}
+\begin{verbatim}
+## [1] "Training the classifier"
+## [1] "Running LOOCV"
+## trial# 1 time remaining =  3.013271 min[1] 1
+## trial# 1001 time remaining =  3.007692 min[1] 1001
+## trial# 2001 time remaining =  3.47136 min[1] 2001
+## trial# 3001 time remaining =  2.63381 min[1] 3001
+## trial# 4001 time remaining =  1.896829 min[1] 4001
+## trial# 5001 time remaining =  2.511363 min[1] 5001
+## trial# 6001 time remaining =  1.840922 min[1] 6001
+## trial# 7001 time remaining =  1.54976 min[1] 7001
+## trial# 8001 time remaining =  1.512785 min[1] 8001
+## trial# 9001 time remaining =  1.180082 min[1] 9001
+## trial# 10001 time remaining =  0.8730705 min[1] 10001
+## trial# 11001 time remaining =  0.8605727 min[1] 11001
+## trial# 12001 time remaining =  0.4395415 min[1] 12001
+## trial# 13001 time remaining =  0.2035384 min[1] 13001
+## 
+##  perf= 0.5787614
+\end{verbatim}
+\begin{alltt}
+\hlstd{DT} \hlkwb{<-} \hlkwd{as.data.frame}\hlstd{(}
+  \hlkwd{lapply}\hlstd{(}\hlkwd{subset}\hlstd{(r, candidate}\hlopt{==}\hlstr{"Donald Trump"}\hlstd{),}
+         \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwa{if}\hlstd{(}\hlkwd{is.factor}\hlstd{(x))} \hlkwd{factor}\hlstd{(x)} \hlkwa{else} \hlstd{x}
+  \hlstd{)}
+\hlstd{)}
+\hlstd{data} \hlkwb{<-} \hlkwd{subset}\hlstd{(DT,}\hlkwc{select}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"sentiment"}\hlstd{,}\hlstr{"text"}\hlstd{))}
+\hlkwd{sentiment}\hlstd{(data)}
+\end{alltt}
+\begin{verbatim}
+## [1] "Training the classifier"
+## [1] "Running LOOCV"
+## trial# 1 time remaining =  0.1671278 min[1] 1
+## trial# 1001 time remaining =  0.1646551 min[1] 1001
+## trial# 2001 time remaining =  0.04750198 min[1] 2001
+## 
+##  perf= 0.6565944
+\end{verbatim}
+\begin{alltt}
+\hlstd{JK} \hlkwb{<-} \hlkwd{as.data.frame}\hlstd{(}
+  \hlkwd{lapply}\hlstd{(}\hlkwd{subset}\hlstd{(r, candidate}\hlopt{==}\hlstr{"John Kasich"}\hlstd{),}
+         \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwa{if}\hlstd{(}\hlkwd{is.factor}\hlstd{(x))} \hlkwd{factor}\hlstd{(x)} \hlkwa{else} \hlstd{x}
+  \hlstd{)}
+\hlstd{)}
+\hlstd{data} \hlkwb{<-} \hlkwd{subset}\hlstd{(JK,}\hlkwc{select}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"sentiment"}\hlstd{,}\hlstr{"text"}\hlstd{))}
+\hlkwd{sentiment}\hlstd{(data)}
+\end{alltt}
+\begin{verbatim}
+## [1] "Training the classifier"
+## [1] "Running LOOCV"
+## trial# 1 time remaining =  0.01208552 min[1] 1
+## 
+##  perf= 0.661157
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,341 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.8.31)  1 OCT 2016 14:43
+entering extended mode
+**./report.tex
+(report.tex
+LaTeX2e <2016/03/31> patch level 3
+Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+) (framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip43
+\fb@frw=\dimen105
+\fb@frh=\dimen106
+\FrameRule=\dimen107
+\FrameSep=\dimen108
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\alltt.sty"
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count88
+\Gm@cntv=\count89
+\c@Gm@tempcnt=\count90
+\Gm@bindingoffset=\dimen109
+\Gm@wd@mp=\dimen110
+\Gm@odd@mp=\dimen111
+\Gm@even@mp=\dimen112
+\Gm@layoutwidth=\dimen113
+\Gm@layoutheight=\dimen114
+\Gm@layouthoffset=\dimen115
+\Gm@layoutvoffset=\dimen116
+\Gm@dimlist=\toks15
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\upquote\upquote.sty"
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+) (report.aux)
+\openout1 = `report.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count91
+\scratchdimen=\dimen117
+\scratchbox=\box26
+\nofMPsegments=\count92
+\nofMParguments=\count93
+\everyMPshowfont=\toks16
+\MPscratchCnt=\count94
+\MPscratchDim=\dimen118
+\MPnumerator=\count95
+\makeMPintoPDFobject=\count96
+\everyMPtoPDFconversion=\toks17
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 61.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 61.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 61.
+Package color Info: Redefining color shadecolor on input line 67.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 69.
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 82.
+
+(C:/PROGRA~1/R/R-33~1.1/share/texmf/tex/latex\omscmtt.fd
+File: omscmtt.fd 
+)
+LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 82.
+ [1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+Package color Info: Redefining color shadecolor on input line 204.
+
+Overfull \hbox (610.48581pt too wide) in paragraph at lines 230--230
+[]\OT1/cmtt/m/n/10 ## Yes 0.007597341No 0.01442308Yes 0.004507212No 0.01969231Y
+es 0.01502404Yes 0.01709402Yes 0.009014423Yes 0.01519468Yes 0.007512019Yes 0.02
+253606No 0.01107692Yes 0.005408654Yes 0.01126803Yes 0.01139601[] 
+ []
+
+
+Overfull \hbox (767.98444pt too wide) in paragraph at lines 238--238
+[]\OT1/cmtt/m/n/10 ## Sunny 0.009615385Sunny 0.004807692Sunny 0.02215385Sunny 0
+.02215385Overcast 0.01923077Sunny 0.007384615Rain 0.02215385Rain 0.02215385Rain
+ 0.03323077Overcast 0.01923077Rain 0.03323077Rain 0.02215385Sunny 0.01476923Sun
+ny 0.02215385[] 
+ []
+
+
+Overfull \hbox (25600.26791pt too wide) in paragraph at lines 246--246
+[]\OT1/cmtt/m/n/10 ## democrat 5.417018e-07republican 0.009148421democrat 0.001
+303638democrat 0.001261585democrat 0.001752536democrat 0.001588068democrat 0.00
+1303638republican 3.377703e-06democrat 0.001303638republican 0.004509785democra
+t 0.0005787669republican 0.009148421democrat 0.001261585republican 0.004509785r
+epublican 0.0003949475republican 0.006113264democrat 0.0007285448democrat 0.001
+031577democrat 0.00153684democrat 0.0008468171democrat 0.0001145822democrat 0.0
+01303638republican 0.001601093republican 0.001086803republican 0.002204657repub
+lican 0.01240119republican 0.01240119republican 0.004509785democrat 0.000875044
+4republican 0.000860108republican 0.0005838309republican 0.006113264democrat 0.
+001261585democrat 2.908822e-05republican 8.139847e-07democrat 0.0007550081repub
+lican 3.959114e-05republican 1.277134e-05democrat 6.169855e-07republican 0.0009
+570874republican 0.01388934republican 0.005050959republican 4.755725e-06republi
+can 0.006846856republican 0.005050959democrat 5.581026e-06democrat 0.001752536d
+emocrat 0.001810954democrat 0.0003550891democrat 3.019952e-06democrat 1.015471e
+-06democrat 0.0007668545republican 9.547547e-07democrat 5.500088e-06democrat 0.
+0003883176republican 0.009148421democrat 0.001217039democrat 0.001588068republi
+can 2.137425e-05democrat 0.0003075127republican 0.005050959republican 0.0024692
+15democrat 0.00010145republican 0.01388934republican 0.006846856republican 2.09
+9673e-05democrat 0.0003405822democrat 0.001220431democrat 1.659821e-06republica
+n 0.0001250648republican 0.009148421democrat 5.834179e-06republican 0.002204657
+democrat 0.0004896134republican 0.003247931democrat 9.824188e-05democrat 0.0001
+41583republican 0.004509785republican 0.0004239969republican 0.006113264republi
+can 1.130767e-05republican 3.711408e-05republican 1.158908e-06republican 0.0032
+84049republican 7.877025e-07democrat 4.135821e-07democrat 0.0006381753republica
+n 2.545712e-05democrat 0.000999062democrat 3.536196e-05democrat 0.001752536demo
+crat 0.001257607democrat 0.001257607democrat 0.001032364democrat 0.00153684demo
+crat 7.444067e-05democrat 0.00106725democrat 0.0005603061democrat 0.001261585de
+mocrat 0.001438111democrat 0.001752536republican 0.0006538906democrat 9.094317e
+-05republican 0.002469215democrat 0.0009978576democrat 0.0008475218republican 0
+.01240119democrat 0.001102825democrat 8.615057e-05republican 0.003247931republi
+can 0.006113264democrat 0.0001415741republican 0.001432269democrat 0.0004597806
+republican 0.0001204327republican 0.009148421republican 0.001887138republican 0
+.01240119republican 0.002469215democrat 0.00106725democrat 1.190724e-05republic
+an 1.69177e-05democrat 0.000950751democrat 0.0005220321democrat 0.001810954repu
+blican 0.004509785republican 0.004509785democrat 0.001001847republican 0.009148
+421democrat 0.00117636democrat 0.0009200816republican 0.0001255197democrat 0.00
+1102825democrat 0.001031577democrat 0.00117636democrat 0.00117636republican 0.0
+02469215democrat 0.0001142154democrat 0.001031577democrat 0.001261585republican
+ 6.193628e-07republican 0.0005848479republican 4.281536e-06republican 0.0102462
+3republican 0.006846856democrat 0.0004288813republican 0.01024623democrat 0.000
+998688democrat 4.687831e-06democrat 7.828322e-05democrat 0.0002493379republican
+ 0.0002859091democrat 0.0001671447democrat 0.0001675658republican 1.748217e-05r
+epublican 0.004985915republican 0.005050959republican 0.006846856republican 0.0
+05050959republican 0.006846856democrat 0.0001182962republican 0.0007927938democ
+rat 0.0002609825democrat 0.001438649republican 0.002204657republican 1.11431e-0
+5democrat 6.468297e-08democrat 0.000283744democrat 3.350339e-05democrat 0.00038
+84874republican 0.0008017396democrat 3.17858e-06republican 0.009148421democrat 
+0.0008750444republican 0.006113264democrat 0.00106725democrat 0.00153684democra
+t 0.0009200816republican 0.0002351769republican 0.0004389716republican 3.107942
+e-06democrat 0.001257607republican 0.000102634republican 0.01388934republican 0
+.001793224republican 1.464459e-05democrat 2.282279e-05republican 2.574433e-06re
+publican 0.0001575796democrat 1.545124e-05republican 0.005050959republican 0.00
+5050959democrat 0.0003758148democrat 4.468993e-05republican 4.468426e-07republi
+can 7.021289e-05republican 1.980645e-06democrat 0.0002044775republican 0.001507
+981republican 0.009148421republican 0.0001689009republican 0.01024623republican
+ 0.01024623democrat 5.780545e-05republican 9.14052e-05republican 2.857983e-07de
+mocrat 3.25192e-06republican 0.0004259582democrat 7.830223e-06democrat 8.780022
+e-06republican 0.001086803republican 0.003247931republican 0.01024623democrat 2
+.822139e-06republican 0.001010483republican 0.005050959republican 0.001821552de
+mocrat 0.0009653072republican 0.01388934democrat 0.0008468171republican 0.00053
+53733democrat 0.000401437democrat 0.0002488837democrat 0.0008468171republican 5
+.631803e-06democrat 1.825498e-05democrat 0.0008757725democrat 0.0003774318democ
+rat 0.001752536republican 0.0008218542republican 0.0003757502democrat 0.0008169
+167[] 
+ []
+
+[3]
+Package color Info: Redefining color shadecolor on input line 254.
+ [4]
+Underfull \vbox (badness 10000) detected at line 429
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 429
+ []
+
+[5] [6] [7] (report.aux) ) 
+Here is how much of TeX's memory you used:
+ 2123 strings out of 493334
+ 30683 string characters out of 3136672
+ 139211 words of memory out of 3000000
+ 5634 multiletter control sequences out of 15000+200000
+ 7011 words of font info for 26 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 40i,6n,25p,4977b,356s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmitt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmtt10.pfb>
+Output written on report.pdf (7 pages, 97088 bytes).
+PDF statistics:
+ 50 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
